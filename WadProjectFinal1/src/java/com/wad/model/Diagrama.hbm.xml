@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2018 08:59:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.wad.model.Diagrama" table="diagrama" catalog="wadfinal" optimistic-lock="version">
+        <id name="idDiagrama" type="int">
+            <column name="id_diagrama" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="com.wad.model.Usuario" fetch="select">
+            <column name="usuario" />
+        </many-to-one>
+        <property name="clave" type="string">
+            <column name="clave" length="20" />
+        </property>
+        <property name="pregunta" type="string">
+            <column name="pregunta" length="100" />
+        </property>
+        <set name="imagens" table="imagen" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="diagrama" />
+            </key>
+            <one-to-many class="com.wad.model.Imagen" />
+        </set>
+    </class>
+</hibernate-mapping>

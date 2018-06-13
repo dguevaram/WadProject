@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/06/2018 08:59:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.wad.model.Usuario" table="usuario" catalog="wadfinal" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="id_usuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grupo" class="com.wad.model.Grupo" fetch="select">
+            <column name="grupo" />
+        </many-to-one>
+        <many-to-one name="tipoUsuario" class="com.wad.model.TipoUsuario" fetch="select">
+            <column name="tipo_usuario" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primer_apellido" length="50" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundo_apellido" length="50" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="50" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" />
+        </property>
+        <set name="diagramas" table="diagrama" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" />
+            </key>
+            <one-to-many class="com.wad.model.Diagrama" />
+        </set>
+    </class>
+</hibernate-mapping>
