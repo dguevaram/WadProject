@@ -7,7 +7,6 @@ package com.wad.bean;
 
 import com.wad.dao.UsuarioDAO;
 import com.wad.model.Usuario;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;

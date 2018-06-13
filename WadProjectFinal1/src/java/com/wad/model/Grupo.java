@@ -26,7 +26,10 @@ public class Grupo  implements java.io.Serializable {
         this.idGrupo = parseInt;
     }
 
-   
+     public Grupo(String nombre) {
+        this.nombre = nombre;
+    }
+     
     public Integer getIdGrupo() {
         return this.idGrupo;
     }

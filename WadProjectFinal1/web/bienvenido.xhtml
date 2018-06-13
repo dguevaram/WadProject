@@ -28,12 +28,16 @@
                     </h:form>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Ocultar" collapsible="true">
+                <p:layoutUnit position="west" size="175" header="Menu" collapsible="true">
                     <p:menu>
-                        <p:submenu label="Actividades">
+                        <p:submenu label="Usuarios">
                             <p:menuitem value="Agregar Usuarios" outcome="agregarUsuario"/>
                             <p:menuitem value="Eliminar Usuarios" outcome="eliminarUsuario" />
                             <p:menuitem value="Cambiar contraseña a usuario" outcome="cambiarContrasenaUsuario" />
+                        </p:submenu>
+                        <p:submenu label="Grupo">
+                            <p:menuitem value="Agregar Grupo" outcome="agregarGrupo" />
+                            <p:menuitem value="Eliminar Grupo" outcome="eliminarGrupo" />
                         </p:submenu>
                     </p:menu>
                 </p:layoutUnit>
