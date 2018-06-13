@@ -39,8 +39,28 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Pantalla de inicio para un administrador, como usted
-                    
+                    <h:form>
+                        <p:dataTable value="#{listarUsuariosBean.usuarios}" var="usuario">
+                            <p:column headerText="Id Usuario:">
+                                <h:outputText value = "#{usuario.idUsuario}" />
+                            </p:column>
+                            <p:column headerText="Nombre:">
+                                <h:outputText value = "#{usuario.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Primer Apellido:">
+                                <h:outputText value = "#{usuario.primerApellido}"/>
+                            </p:column>   
+                            <p:column headerText="Segundo Apellido:">
+                                <h:outputText value = "#{usuario.segundoApellido}"/>
+                            </p:column>
+                            <p:column headerText="Nombre de Usuario:">
+                                <h:outputText value = "#{usuario.username}"/>
+                            </p:column>
+                            <p:column headerText="Contraseña:">
+                                <h:outputText value = "#{usuario.password}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>

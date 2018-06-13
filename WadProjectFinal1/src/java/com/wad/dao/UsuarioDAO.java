@@ -90,7 +90,7 @@ public class UsuarioDAO {
         try{
             tx = session.beginTransaction();
             String hql = "from Usuario";
-            usuarios = (List<Usuario>) session.createQuery(hql);
+            usuarios = (List<Usuario>) session.createQuery(hql).list();
             //SQLQuery createSQLQuery = session.createSQLQuery("select * from usuario");
             //usuarios = createSQLQuery.list();
             System.out.println("Los usuarios disponibles son:");

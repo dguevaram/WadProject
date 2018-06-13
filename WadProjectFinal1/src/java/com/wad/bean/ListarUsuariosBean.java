@@ -31,6 +31,7 @@ public class ListarUsuariosBean implements Serializable {
     public ListarUsuariosBean() {
     }
     
+    @PostConstruct
     public void init(){
         UsuarioDAO usuarioDAO= new UsuarioDAO();
         this.usuarios = usuarioDAO.listarUsuarios();

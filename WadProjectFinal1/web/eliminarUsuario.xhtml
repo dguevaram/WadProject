@@ -19,7 +19,6 @@
                 <h:commandButton value="Eliminar" action="#{usuarioBean.deleteUsuario()}" /> 
             </h:form>
             <h:form>
-                <h:commandButton value="Listar" action="#{listarUsuariosBean.init()}" /> 
                 <p:dataTable value="#{listarUsuariosBean.usuarios}" var="usuario">
                     <p:column headerText="Id Usuario:">
                         <h:outputText value = "#{usuario.idUsuario}" />
