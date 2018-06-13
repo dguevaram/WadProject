@@ -68,7 +68,7 @@ public class UsuarioBean implements Serializable {
     }
 
     
-    public void addUsuario(){
+    public String addUsuario(){
         TipoUsuario tipo = new TipoUsuario(Integer.parseInt(idtipousuario));   
         this.tipoUsuario=tipo;
         Grupo grupo = new Grupo(Integer.parseInt(idgrupo));
@@ -76,6 +76,7 @@ public class UsuarioBean implements Serializable {
         Usuario usuario= new Usuario(getGrupo(), getTipoUsuario(), getNombre(), getPrimerApellido(), getSegundoApellido(), getUsername(), getPassword());
         UsuarioDAO usuarioDAO= new UsuarioDAO();
         usuarioDAO.addUsuario(usuario);
+        return "bienvenido";
     }
     
     public void deleteUsuario(){
