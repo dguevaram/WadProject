@@ -26,7 +26,7 @@ public class Grupo  implements java.io.Serializable {
         this.idGrupo = parseInt;
     }
 
-     public Grupo(String nombre) {
+    public Grupo(String nombre) {
         this.nombre = nombre;
     }
      

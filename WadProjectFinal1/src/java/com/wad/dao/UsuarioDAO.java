@@ -91,12 +91,6 @@ public class UsuarioDAO {
             tx = session.beginTransaction();
             String hql = "from Usuario";
             usuarios = (List<Usuario>) session.createQuery(hql).list();
-            //SQLQuery createSQLQuery = session.createSQLQuery("select * from usuario");
-            //usuarios = createSQLQuery.list();
-            System.out.println("Los usuarios disponibles son:");
-            for(int i = 0; i<usuarios.size(); i++){
-                System.out.println(usuarios.get(i).getUsername());
-            }
             session.getTransaction().commit();
         }catch(Exception e){
             e.printStackTrace();

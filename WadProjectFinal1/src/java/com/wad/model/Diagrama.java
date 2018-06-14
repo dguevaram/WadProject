@@ -24,6 +24,7 @@ public class Diagrama  implements java.io.Serializable {
     public Diagrama(int idDiagrama) {
         this.idDiagrama = idDiagrama;
     }
+    
     public Diagrama(int idDiagrama, Usuario usuario, String clave, String pregunta, Set<Imagen> imagens) {
        this.idDiagrama = idDiagrama;
        this.usuario = usuario;
@@ -31,7 +32,7 @@ public class Diagrama  implements java.io.Serializable {
        this.pregunta = pregunta;
        this.imagens = imagens;
     }
-   
+    
     public int getIdDiagrama() {
         return this.idDiagrama;
     }

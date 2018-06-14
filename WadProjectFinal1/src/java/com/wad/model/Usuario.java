@@ -49,6 +49,10 @@ public class Usuario  implements java.io.Serializable {
        this.password = password;
     }
 
+    public Usuario(Object attribute) {
+        this.username = (String)attribute;
+    }
+
    
     public Integer getIdUsuario() {
         return this.idUsuario;

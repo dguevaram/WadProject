@@ -74,7 +74,7 @@ public class UsuarioBean implements Serializable {
         Grupo grupo = new Grupo(Integer.parseInt(idgrupo));
         this.grupo = grupo;
         Usuario usuario= new Usuario(getGrupo(), getTipoUsuario(), getNombre(), getPrimerApellido(), getSegundoApellido(), getUsername(), getPassword());
-        UsuarioDAO usuarioDAO= new UsuarioDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.addUsuario(usuario);
         return "bienvenido";
     }
