@@ -102,4 +102,27 @@ public class UsuarioDAO {
         }  
         return usuarios;
     }
+    
+    public Usuario verificarUsuario(Usuario usuario){
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Usuario usuarioaux = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Usuario u WHERE u.username = :userName";
+            System.out.println("LLego aqui");
+            usuarioaux = (Usuario) session.createQuery(hql)
+                    .setParameter("userName", usuario.getUsername())
+                    .uniqueResult();
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }    
+        return usuarioaux;
+    }
 }

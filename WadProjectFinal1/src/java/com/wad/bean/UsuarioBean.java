@@ -74,9 +74,16 @@ public class UsuarioBean implements Serializable {
         Grupo grupo = new Grupo(Integer.parseInt(idgrupo));
         this.grupo = grupo;
         Usuario usuario= new Usuario(getGrupo(), getTipoUsuario(), getNombre(), getPrimerApellido(), getSegundoApellido(), getUsername(), getPassword());
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.addUsuario(usuario);
-        return "bienvenido";
+        UsuarioDAO usuarioDAOaux = new UsuarioDAO();
+        Usuario aux = usuarioDAOaux.verificarUsuario(usuario);
+        if(aux != null){
+            return "agregarUsuario";
+        }
+        else{
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarioDAO.addUsuario(usuario);
+            return "bienvenido";
+        }
     }
     
     public void deleteUsuario(){

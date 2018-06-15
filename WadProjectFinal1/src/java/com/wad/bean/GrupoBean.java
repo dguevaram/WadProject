@@ -37,10 +37,17 @@ public class GrupoBean implements Serializable{
     
     public String addGroup(){
         Grupo grupo = new Grupo(getNombre());
-        GrupoDAO grupoDAO = new GrupoDAO();
-        grupoDAO.addGrupo(grupo);
-        this.grupo=grupoDAO.listarGrupos();
-        return "bienvenido";
+        GrupoDAO grupoDAOverificador = new GrupoDAO();
+        Grupo aux = grupoDAOverificador.verificarGrupo(grupo);
+        if(aux != null){
+            return "agregarGrupo";
+        }
+        else{
+            GrupoDAO grupoDAO = new GrupoDAO();
+            grupoDAO.addGrupo(grupo);
+            this.grupo=grupoDAO.listarGrupos();
+            return "bienvenido";
+        }
     }
     
     public String deleteGroup(){

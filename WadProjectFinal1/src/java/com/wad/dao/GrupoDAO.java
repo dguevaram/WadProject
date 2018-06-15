@@ -75,4 +75,26 @@ public class GrupoDAO {
             session.close();
         }
     }
+    
+    public Grupo verificarGrupo(Grupo grupo) {
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Grupo grupoaux = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Grupo g where g.nombre = :Nombre";
+            grupoaux = (Grupo) session.createQuery(hql)
+                    .setParameter("Nombre", grupo.getNombre())
+                    .uniqueResult();
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return grupoaux;
+    }
 }
