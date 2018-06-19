@@ -5,10 +5,57 @@
  */
 package com.wad.dao;
 
+import com.wad.model.Imagen;
+import com.wad.util.NewHibernateUtil;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author danielguevara
  */
 public class ImagenDAO {
+    public List<Imagen> listarImagenes(){
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        List<Imagen> imagenes = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Imagen";
+            imagenes = (List<Imagen>) session.createQuery(hql).list();
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }  
+        return imagenes;
+    }
+    
+    public Imagen encontrarPorId(Integer id){
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Imagen imagen = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Imagen im where im.idImagen=:id";
+            imagen = (Imagen) session.createQuery(hql).
+                    setParameter("id", id)
+                    .uniqueResult();
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }  
+        return imagen;
+    }
     
 }
