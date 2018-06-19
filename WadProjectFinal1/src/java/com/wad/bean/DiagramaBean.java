@@ -10,7 +10,9 @@ import com.wad.dao.DiagramaDAO;
 import com.wad.model.Diagrama;
 import com.wad.model.Imagen;
 import com.wad.model.Usuario;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,7 +32,7 @@ public class DiagramaBean {
     private String clave;
     private String pregunta;
     private Set<Imagen> imagens = new HashSet<Imagen>(0);
-     
+
     public DiagramaBean() {
     }
     
@@ -43,6 +45,13 @@ public class DiagramaBean {
         Diagrama diagrama = new Diagrama(getIdDiagrama(),getUsuario(), getClave(), getPregunta(), getImagens());
         diagramaDAO.addDiagrama(diagrama);
     }
+    
+     public void deleteDiagrama(){
+        Diagrama diagrama = new Diagrama(getIdDiagrama());
+        DiagramaDAO diagramaDAO= new DiagramaDAO();
+        diagramaDAO.deleteDiagramaDAO(diagrama);
+    }
+    
 
     public int getIdDiagrama() {
         return idDiagrama;
@@ -83,5 +92,6 @@ public class DiagramaBean {
     public void setImagens(Set<Imagen> imagens) {
         this.imagens = imagens;
     }
+    
     
 }
