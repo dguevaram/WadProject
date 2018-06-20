@@ -6,11 +6,15 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-         <h:form>
+        <h:form>
             nombre de usuario: <h:inputText value="#{usuarioBean.username}" /> <br/>
             contraseña: <h:inputSecret value="#{usuarioBean.password}" /> <br/>
             <h:commandButton value="Iniciar Sesion" action="#{usuarioBean.loginUsuario()}"/>    
         </h:form>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>
 

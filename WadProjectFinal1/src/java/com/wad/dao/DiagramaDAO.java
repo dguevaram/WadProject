@@ -41,7 +41,7 @@ public class DiagramaDAO {
         try{
             tx = session.beginTransaction();            
             String hql = "SELECT max(id_diagrama)FROM Diagrama d";
-            System.out.println("LLego aqui");
+            //System.out.println("LLego aqui");
             auxId = (Integer) session.createQuery(hql).uniqueResult();
             session.getTransaction().commit();
         }catch(Exception e){

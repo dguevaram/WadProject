@@ -4,12 +4,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Agregar Usuario</title>
+        <title>Crear Examen</title>
     </h:head>
     <h:body>
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                       Eliminar Usuario
+                       Crear Examen
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
@@ -22,8 +22,8 @@
             <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
                 <p:menu>
                     <p:submenu label="Resources">
-                        <p:menuitem value="Agregar pregunta" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                         <p:menuitem value="Agregar respuesta" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                        <p:menuitem value="Agregar diagrama" outcome="agregarDiagrama" />
+                         <p:menuitem value="Agregar imagen" outcome="agregarImagen"/>
                     </p:submenu>
                 </p:menu>
             </p:layoutUnit>

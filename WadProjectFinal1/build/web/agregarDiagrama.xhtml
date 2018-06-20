@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Agregar Usuario</title>
+        <title>Agregar Diagrama</title>
     </h:head>
     <h:body>
         <script type="text/javascript">
@@ -17,11 +17,13 @@
         </script>
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                Agregar usuario
+                Crea Examen
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
                 <h:form >
+                    Clave del diagrama: <h:inputText value="#{diagramaBean.clave}" /><br/> 
+                    Pregunta: <h:inputText value="#{diagramaBean.pregunta}" /><br/> 
                     <p:fieldset id="availableImagesFieldSet" legend="Imagenes displobibles">
                         <p:dataGrid id="availableImages" var="imagenIter" value="#{imageBean.imagenes}" columns="3">
                             <p:panel id="pnl" header="#{imagenIter.nombre}" style="text-align:center">
@@ -45,7 +47,7 @@
                                     <h:outputText value="#{selectedImagenIter.nombre}" />
                                 </p:column>
 
-                                <p:column headerText="Color">
+                                <p:column headerText="Imagen">
                                     <p:graphicImage value="#{imageBean.image}" width="100px" height="100px">
                                         <f:param name="imageId" value="#{selectedImagenIter.idImagen}" />
                                     </p:graphicImage>
@@ -58,10 +60,11 @@
                     <p:droppable for="selectedImages" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableImages" onDrop="handleDrop">
                         <p:ajax listener="#{imageBean.onImageDrop}" update="dropArea availableImages" />
                     </p:droppable>
+                    <h:commandButton value="Guardar" action="#{diagramaBean.agregarDiagrama()}" />
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                <h:link outcome="bienvenido" value="Regresar" /><br/>
+                <h:link outcome="bienvenidoProfesor" value="Regresar" /><br/>
             </p:layoutUnit>
         </p:layout>
     </h:body>

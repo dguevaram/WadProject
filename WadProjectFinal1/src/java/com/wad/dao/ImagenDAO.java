@@ -58,4 +58,40 @@ public class ImagenDAO {
         return imagen;
     }
     
+    public void eliminarPorId(Integer id){
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        ImagenDAO imagendao = new ImagenDAO();
+        Imagen imagen = imagendao.encontrarPorId(id);
+        try{
+            tx = session.beginTransaction();
+            session.delete(imagen);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }
+    }
+    
+    public void addImagen(Imagen imagen){
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        try{
+            tx = session.beginTransaction();
+            session.save(imagen);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }    
+    }
+    
 }
