@@ -34,7 +34,7 @@ public class DiagramaDAO {
         }
     }
     
-    public Integer getMaxId(){
+/*    public Integer getMaxId(){
         Transaction tx = null;
         Session session = NewHibernateUtil.getSessionFactory().openSession();
         Integer auxId = null;
@@ -54,7 +54,7 @@ public class DiagramaDAO {
         }
         return auxId;
     }
-
+*/
     public void deleteDiagramaDAO(Diagrama diagrama) {
         Transaction tx = null;
         Session session = NewHibernateUtil.getSessionFactory().openSession();

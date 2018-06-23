@@ -28,7 +28,8 @@ public class ImageBean implements Serializable {
     private List<Imagen> selectedImagenes;
     private Imagen imagen;
     private ImagenDAO imagenDAO;
-
+    private String nombre;
+    private int idImagen;
     /**
      * Creates a new instance of ImageBean
      */
@@ -57,6 +58,20 @@ public class ImageBean implements Serializable {
         }
     }
     
+     public String addImage(){
+        Imagen imagen = new Imagen(getIdImagen());
+        ImagenDAO imagenDao = new ImagenDAO();
+        Imagen aux = imagenDAO.verificarImagen(imagen);
+        if(aux != null){
+            return "agregarImagen";
+        }
+        else{
+            ImagenDAO imagenDAO = new ImagenDAO();
+            imagenDAO.addImagen(imagen);
+            this.imagenes=imagenDAO.listarImagenes();
+            return "agregarDiagrama";
+        }
+    }
     public void onImageDrop(DragDropEvent ddEvent) {
         Imagen img = ((Imagen) ddEvent.getData());
   
@@ -86,6 +101,30 @@ public class ImageBean implements Serializable {
 
     public void setSelectedImagenes(List<Imagen> selectedImagenes) {
         this.selectedImagenes = selectedImagenes;
+    }
+
+    public ImagenDAO getImagenDAO() {
+        return imagenDAO;
+    }
+
+    public void setImagenDAO(ImagenDAO imagenDAO) {
+        this.imagenDAO = imagenDAO;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getIdImagen() {
+        return idImagen;
+    }
+
+    public void setIdImagen(int idImagen) {
+        this.idImagen = idImagen;
     }
     
     

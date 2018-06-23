@@ -93,5 +93,25 @@ public class ImagenDAO {
             session.close();
         }    
     }
-    
+    public Imagen verificarImagen(Imagen imagen) {
+        Transaction tx = null;
+        Session session = NewHibernateUtil.getSessionFactory().openSession();
+        Imagen imagenaux = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "from Imagen i where i.idImagen = :IdImagen";
+            imagenaux = (Imagen) session.createQuery(hql)
+                    .setParameter("IdImagen", imagen.getIdImagen())
+                    .uniqueResult();
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            if(tx != null)
+                tx.rollback();
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return imagenaux;
+    }
 }

@@ -41,8 +41,7 @@ public class DiagramaBean {
         Usuario usuario = new Usuario(s.getAttribute("sesionusuario"));
         this.usuario=usuario;
         DiagramaDAO diagramaDAO = new DiagramaDAO();
-        this.idDiagrama = diagramaDAO.getMaxId() +1;
-        Diagrama diagrama = new Diagrama(getIdDiagrama(),getUsuario(), getClave(), getPregunta(), getImagens());
+        Diagrama diagrama = new Diagrama(getUsuario(), getClave(), getPregunta(), getImagens());
         diagramaDAO.addDiagrama(diagrama);
     }
     
